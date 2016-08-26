@@ -1,0 +1,22 @@
+<%= form_for :message, url: '/create' do |m| %>
+  <div class=input-wrapper>
+    Name : <%= m.text_field :author, value: @name %><br />
+  </div>
+  <div class=input-wrapper>
+    Message :  <%= m.text_area :content, required: true, maxlength: 500 %><br />
+  </div>
+  <%= m.submit %>
+<% end %>
+
+<% @messages.each do |m| %>
+  <div class=message-wrapper>
+    <div class=message>
+      <span class=author>
+        <%= m.author.blank? ? 'Anonymous' : m.author %>:
+      </span>
+      <span class=content>
+        <%= m.content %>
+      </span>
+    </div>
+  </div>
+<% end %>

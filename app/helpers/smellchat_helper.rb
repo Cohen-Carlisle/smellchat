@@ -1,0 +1,2 @@
+module SmellchatHelper
+end
