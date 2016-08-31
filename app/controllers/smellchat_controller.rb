@@ -2,7 +2,7 @@ class SmellchatController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def main
-    @messages = Message.all.reverse
+    @messages = Message.order('created_at DESC')
   end
 
   def create
