@@ -1,22 +1,24 @@
 <%= form_for :message, url: '/create' do |m| %>
-  <div class=input-wrapper>
+  <div class="input-wrapper">
     Name : <%= m.text_field :author, value: cookies[:username] %><br />
   </div>
-  <div class=input-wrapper>
+  <div class="input-wrapper">
     Message :  <%= m.text_area :content, required: true, maxlength: 500 %><br />
   </div>
   <%= m.submit %>
 <% end %>
 
-<% @messages.each do |m| %>
-  <div class=message-wrapper>
-    <div class=message>
-      <span class=author>
-        <%= m.author.blank? ? 'Anonymous' : m.author %>:
-      </span>
-      <span class=content>
-        <%= m.content %>
-      </span>
+<div id="edwin-container">
+  <% @messages.each do |m| %>
+    <div>
+      <div class="message">
+        <span class="author">
+          <%= m.author.present? ? m.author : 'Anonymous' %>
+        </span>
+        <span class="content">
+          <%= m.content %>
+        </span>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

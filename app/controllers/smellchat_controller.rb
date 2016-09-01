@@ -6,7 +6,10 @@ class SmellchatController < ApplicationController
   end
 
   def create
-    Message.create!(message_params)
+    message = Message.create!(message_params)
+    ActionCable.server.broadcast('messages',
+                                 content: message_params[:content],
+                                 author: message_params[:author])
     cookies[:username] = {
       value: message_params[:author],
       expires: 1.year.from_now
