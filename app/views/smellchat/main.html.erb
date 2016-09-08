@@ -1,4 +1,4 @@
-<%= form_for :message, url: '/create' do |m| %>
+<%= form_for :message, url: '/create', remote: true do |m| %>
   <div class="input-wrapper">
     Name : <%= m.text_field :author, value: cookies[:username] %><br />
   </div>
@@ -13,7 +13,7 @@
     <div>
       <div class="message">
         <span class="author">
-          <%= m.author.present? ? m.author : 'Anonymous' %>
+          <%= m.author || 'Anonymous' %>
         </span>
         <span class="content">
           <%= m.content %>

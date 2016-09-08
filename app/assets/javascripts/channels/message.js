@@ -7,18 +7,19 @@ this.App = {};
 App.cable = ActionCable.createConsumer();
 
 App.messages = App.cable.subscriptions.create('ChatChannel', {
-  received: function(data) {
-    return $('#edwin-container').prepend(this.renderMessage(data));
+  received: function(message) {
+    return $('#edwin-container').prepend(this.renderMessage(message));
   },
 
-  renderMessage: function(data) {
+  renderMessage: function(message) {
     return '<div>' +
              '<div class="message">' +
                '<span class="author">' +
-                 data.author +
+                 (message.author || 'Anonymous') +
+                 ' ' + //makes it look the same as erb
                '</span>' +
-               '<span class="conten">' +
-                 data.content +
+               '<span class="content">' +
+                 message.content +
                '</span>' +
              '</div>' +
             '</div>';
