@@ -10,6 +10,9 @@ class MessageController < ApplicationController
                                    content: message.content,
                                    author: message.author)
       cookies.permanent[:username] = message.author
+      head :ok
+    else
+      head :bad_request
     end
   end
 
