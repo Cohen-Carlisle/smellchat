@@ -1,24 +1,26 @@
-<%= form_for :message, url: 'message/create', remote: true, html: { autocomplete: 'off' } do |m| %>
-  <div class="input-wrapper">
-    Name : <%= m.text_field :author, value: cookies[:username] %><br />
-  </div>
-  <div class="input-wrapper">
-    Message :  <%= m.text_field :content, required: true, pattern: '.*\S+.*', title: 'Cannot be blank', maxlength: 500 %><br />
-  </div>
-  <%= m.submit %>
-<% end %>
-
-<div id="edwin-container">
-  <% @messages.each do |m| %>
-    <div>
-      <div class="message">
-        <span class="author">
-          <%= m.author || 'Anonymous' %>
-        </span>
-        <span class="content">
-          <%= m.content %>
-        </span>
-      </div>
+<div class=jumbotron-not-the-bootstrap-one>
+  <%= form_for :message, url: 'message/create', remote: true, html: { autocomplete: 'off' } do |m| %>
+    <div class="input-wrapper">
+      Name : <%= m.text_field :author, value: cookies[:username] %><br />
     </div>
+    <div class="input-wrapper">
+      Message :  <%= m.text_field :content, required: true, pattern: '.*\S+.*', title: 'Cannot be blank', maxlength: 500 %><br />
+    </div>
+    <%= m.submit %>
   <% end %>
+
+  <div id="edwin-container">
+    <% @messages.each do |m| %>
+      <div>
+        <div class="message">
+          <span class="author">
+            <%= m.author || 'Anonymous' %>
+          </span>
+          <span class="content">
+            <%= m.content %>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
