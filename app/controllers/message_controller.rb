@@ -6,9 +6,7 @@ class MessageController < ApplicationController
   def create
     message = Message.new(message_params)
     if message.save
-      ActionCable.server.broadcast('messages',
-                                   content: message.content,
-                                   author: message.author)
+      ActionCable.server.broadcast('messages', message.slice(:author, :content))
       cookies.permanent[:username] = message.author
       head :ok
     else
