@@ -3,5 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  $("form").on "ajax:error", (e, xhr, status, error) ->
+  $("form").on("ajax:error", (e, xhr, status, error) ->
     alert("Something went wrong.")
+  ).on("ajax:success", (e, data, status, xhr) ->
+    $('#message_content').val('')
+  )

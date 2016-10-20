@@ -6,7 +6,7 @@
     <div class="input-wrapper">
       Message :  <%= m.text_field :content, required: true, pattern: '.*\S+.*', title: 'Cannot be blank', maxlength: 500 %><br />
     </div>
-    <%= m.submit %>
+    <%= m.submit "Send", data: { disable_with: "Smelling..." } %>
   <% end %>
 
   <div id="edwin-container">

@@ -15,10 +15,11 @@ gem 'redis', '~> 3.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem 'pry-byebug'
 end
 
 group :development do
+  gem 'pry-rails'
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
