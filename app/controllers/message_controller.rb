@@ -1,12 +1,14 @@
 class MessageController < ApplicationController
+  FIELDS = %i(author content).freeze
+
   def all
-    @messages = Message.order('created_at DESC')
+    @messages = Message.select(FIELDS).order('created_at DESC')
   end
 
   def create
     message = Message.new(message_params)
     if message.save
-      ActionCable.server.broadcast('messages', message.slice(:author, :content))
+      ActionCable.server.broadcast('messages', message.slice(*FIELDS))
       cookies.permanent[:username] = message.author
       head :ok
     else
