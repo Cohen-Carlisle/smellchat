@@ -3,7 +3,7 @@ class Message < ApplicationRecord
   validates :content, presence: true, length: { maximum: 500 }
 
   before_save do
-    author = author.presence&.squish
-    content = content.squish
+    self.author = author.presence&.squish
+    self.content = content.squish
   end
 end
