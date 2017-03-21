@@ -6,6 +6,7 @@ class MessageController < ApplicationController
   end
 
   def create
+    sleep 1
     message = Message.new(message_params)
     if message.save
       ActionCable.server.broadcast('messages', message.slice(*FIELDS))

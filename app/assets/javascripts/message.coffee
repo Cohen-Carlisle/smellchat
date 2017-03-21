@@ -7,4 +7,5 @@ $(document).ready ->
     alert("Something went wrong.")
   ).on("ajax:success", (e, data, status, xhr) ->
     $('#message_content').val('')
+    setTimeout (-> console.log("yolo")), 500
   )

@@ -1,5 +1,12 @@
 <div class=jumbotron-not-the-bootstrap-one>
-  <%= form_for :message, url: 'message/create', remote: true, html: { autocomplete: 'off' } do |m| %>
+  <%= form_for \
+    :message,
+      url: 'message/create',
+      remote: true,
+      html: {
+        autocomplete: 'off',
+        onsubmit: 'console.log("what");'
+      } do |m| %>
     <div class="input-wrapper">
       Name : <%= m.text_field :author, value: cookies[:username] %><br />
     </div>
